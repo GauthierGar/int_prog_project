@@ -5,9 +5,10 @@ d = [0,8,6,6,4,8,4,0]
 
 model = Model(GLPK.Optimizer)
 
-@variable(model, x[1:8], integer=false)
+@variable(model, x[1:8], integer=true)
 
 @objective(model, Min, x[8])
+#@objective(model, Min, sum(x))
 
 @constraint(model, x[1] == 0)
 
