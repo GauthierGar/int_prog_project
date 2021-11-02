@@ -12,7 +12,7 @@ one = [1,1,1,1,1,1]
 
 model = Model(GLPK.Optimizer)
 
-@variable(model, x[1:n,1:m], binary=false)
+@variable(model, x[1:n,1:m], binary=true)
 
 @objective(model, Max, sum(x'*p) + ((one-sum(x,dims = 2))' * u)[1])
 
@@ -20,9 +20,10 @@ for j=1:m
     @constraint(model, w'*x[:,j] <= b[j])
 end
 
-for i=1:n
-    @constraint(model, sum(x[i,:]) <= 1)
-end
+
+#for i=1:n
+#    @constraint(model, sum(x[i,:]) <= 1)
+#end
 
 for i=1:n
     for j=1:m

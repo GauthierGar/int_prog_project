@@ -1,14 +1,16 @@
 using JuMP
 using GLPK
 
+bo = false
+
 m=Model(with_optimizer(GLPK.Optimizer))
-@variable(m, x1 >=0 )
-@variable(m, x2 >=0 )
-@variable(m, x3 >=0 )
-@variable(m, x4 >=0 )
-@variable(m, x5 >=0 )
-@variable(m, x6 >=0 )
-@variable(m, x7 >=0 )
+@variable(m, x1 >=0, integer=bo)
+@variable(m, x2 >=0, integer=bo)
+@variable(m, x3 >=0, integer=bo)
+@variable(m, x4 >=0, integer=bo)
+@variable(m, x5 >=0, integer=bo)
+@variable(m, x6 >=0, integer=bo)
+@variable(m, x7 >=0, integer=bo)
 
 
 @objective(m,Min,x7)
