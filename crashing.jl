@@ -4,14 +4,14 @@ using JuMP, GLPK
 n = [0,8,6,6,4,8,4,0]
 t = [0,5,5,4,4,6,3,0]
 c = [0,15000,12500,6500,0,20000,7500,0]
-d = [0,8,6,6,4,8,4,0]
-T = 15
+T = 17
 
 
 model = Model(GLPK.Optimizer)
 
-@variable(model, x[1:8], integer=false)
-@variable(model, y[1:8], integer=false)
+@variable(model, x[1:8], integer=true)
+@variable(model, y[1:8], integer=true)
+@variable(model, d[1:8], integer=true)
 
 #@objective(model, Min, x[8])
 @objective(model, Min, c'*y)
